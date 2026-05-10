@@ -1,0 +1,235 @@
+/* ============================================================
+   DAFINA SMITH · DESIGN TOKENS
+   Color & Typography foundations.
+   Source: dafina-brand-standards.docx (2026)
+   ============================================================ */
+
+/* ---------- FONTS ---------- */
+/* Cormorant Garamond + DM Mono are loaded from Google Fonts.
+   Per brand standards, weights used:
+     Cormorant Garamond: 400, 500, 600, 700 (italic across all)
+     DM Mono:            300, 400, 500
+*/
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Mono:wght@300;400;500&display=swap');
+
+:root {
+  /* ===========================================================
+     COLOR · primary palette (observed colors, not designed)
+     =========================================================== */
+  --warm-black:        #0D0B08;   /* GROUND        primary background    */
+  --warm-parchment:    #F2EDE4;   /* PRIMARY TEXT  on dark grounds       */
+  --terra-rose:        #C08B6E;   /* PRIMARY ACCENT — the Dafina mark    */
+  --hermitage-sage:    #7A8C6B;   /* SECONDARY ACCENT — organic content  */
+
+  /* SUPPORTING TONES */
+  --rose-light:        #F7EDE5;   /* soft callout / hover tint           */
+  --sage-light:        #EBF0E9;   /* soft callout for organic content    */
+  --cream:             #EDE8DD;   /* hairline rules, soft borders        */
+  --slate:             #4A5568;   /* secondary text on light grounds     */
+  --rust:              #7A3535;   /* emphasis, field labels, attribution */
+
+  /* SEMANTIC COLOR ROLES (use these, not raw palette values) */
+  --bg-ground:         var(--warm-black);
+  --bg-paper:          var(--warm-parchment);
+  --bg-tint-rose:      var(--rose-light);
+  --bg-tint-sage:      var(--sage-light);
+
+  --fg-on-dark:        var(--warm-parchment);
+  --fg-on-light:       var(--warm-black);
+  --fg-secondary:      var(--slate);
+  --fg-muted:          color-mix(in oklab, var(--slate) 70%, var(--warm-parchment));
+  --fg-emphasis:       var(--rust);
+
+  --accent:            var(--terra-rose);
+  --accent-organic:    var(--hermitage-sage);
+
+  --border:            var(--cream);
+  --border-strong:     color-mix(in oklab, var(--cream) 60%, var(--warm-black));
+  --grid-line:         color-mix(in oklab, var(--cream) 80%, transparent);
+
+  /* ===========================================================
+     TYPE FAMILIES
+     =========================================================== */
+  --font-display: 'Cormorant Garamond', 'EB Garamond', Garamond, 'Times New Roman', serif;
+  --font-mono:    'DM Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* ===========================================================
+     TYPE SCALE (per the brand standards hierarchy)
+     =========================================================== */
+  --fs-hero:        clamp(48px, 7vw, 80px);   /* 60–80pt · Regular     */
+  --fs-section:     clamp(30px, 4vw, 44px);   /* 32–44pt · Medium      */
+  --fs-subhead:     14px;                     /* DM Mono · ALL CAPS    */
+  --fs-body:        19px;                     /* 18–20pt · Regular     */
+  --fs-pull-quote:  clamp(22px, 2.6vw, 32px); /* 24–32pt · Italic      */
+  --fs-caption:     12px;                     /* 11–12pt · DM Mono     */
+  --fs-button:      13px;                     /* DM Mono · CAPS · 500  */
+  --fs-meta:        11px;
+
+  --lh-hero:    1.04;
+  --lh-display: 1.10;
+  --lh-body:    1.55;
+  --lh-mono:    1.35;
+
+  /* ALL CAPS labels / buttons / nav use this letter-spacing */
+  --tracking-caps:    0.18em;
+  --tracking-caps-tight: 0.12em;
+  /* Wordmark spec: Cormorant Bold, letter-spacing 80 (= 0.08em) */
+  --tracking-wordmark: 0.32em;
+
+  /* ===========================================================
+     SPACING · 8pt scale + a 4pt half-step
+     =========================================================== */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  24px;
+  --s-6:  32px;
+  --s-7:  48px;
+  --s-8:  64px;
+  --s-9:  96px;
+  --s-10: 128px;
+
+  /* ===========================================================
+     RADIUS · the brand prefers no/low rounding (editorial)
+     =========================================================== */
+  --r-0: 0px;       /* default — no rounding */
+  --r-1: 2px;       /* hairline rounding for inputs */
+  --r-pill: 999px;  /* tags only */
+
+  /* ===========================================================
+     SHADOWS · used sparingly. warmth, not depth.
+     =========================================================== */
+  --shadow-quiet:  0 1px 0 0 var(--cream);
+  --shadow-soft:   0 12px 40px -24px rgba(13, 11, 8, 0.35);
+  --shadow-image:  0 30px 80px -40px rgba(13, 11, 8, 0.55);
+
+  /* ===========================================================
+     MOTION · slower than feels right. cut on the breath.
+     =========================================================== */
+  --ease-out:    cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0.05, 0.36, 1);
+  --dur-fast:    220ms;
+  --dur-base:    420ms;
+  --dur-slow:    700ms;
+
+  /* ===========================================================
+     LAYOUT
+     =========================================================== */
+  --maxw-prose:   68ch;
+  --maxw-content: 1240px;
+  --gutter:       clamp(20px, 4vw, 56px);
+}
+
+/* ============================================================
+   SEMANTIC TYPE STYLES
+   ============================================================ */
+.h-hero,
+h1.hero {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-hero);
+  line-height: var(--lh-hero);
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+.h-section,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-section);
+  line-height: var(--lh-display);
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(22px, 2.4vw, 28px);
+  line-height: 1.2;
+}
+
+.subhead,
+.eyebrow {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--fs-subhead);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  color: var(--accent);
+}
+
+.body,
+p {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  text-wrap: pretty;
+}
+
+.pull-quote,
+blockquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--fs-pull-quote);
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.caption {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--fs-caption);
+  line-height: var(--lh-mono);
+  letter-spacing: 0.04em;
+  color: var(--fg-secondary);
+}
+
+.meta,
+.byline,
+time {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--fs-meta);
+  letter-spacing: var(--tracking-caps-tight);
+  text-transform: uppercase;
+}
+
+.button-label,
+.btn {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--fs-button);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+}
+
+/* WORDMARK — Cormorant Bold, locked caps, tracking 80 */
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wordmark);
+}
+
+/* ============================================================
+   DARK GROUND DEFAULT
+   The brand is dark-first. Most content lives on Warm Black.
+   ============================================================ */
+.ground-dark {
+  background: var(--bg-ground);
+  color: var(--fg-on-dark);
+}
+.ground-light {
+  background: var(--bg-paper);
+  color: var(--fg-on-light);
+}
+
+/* Body text on a light ground uses Slate for secondary information */
+.ground-light .caption,
+.ground-light .meta { color: var(--fg-secondary); }
